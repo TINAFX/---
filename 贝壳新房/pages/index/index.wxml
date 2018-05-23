@@ -1,0 +1,183 @@
+<!--index.wxml-->
+<!-- <view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> -->
+
+
+
+
+
+
+<view class='all'>
+    <view class='top'>
+      <text class='top-title'>
+        <text class='head' >
+            <text class='title'>{{main.data.house_info.title}}</text>
+            <text class='shop'>商铺</text>
+            <text class='buy'>在售</text>
+        </text>
+          <text class='other'>别名：{{main.data.house_info.seTitle}}</text>
+      </text>
+      <view class='top-img clearfix'>
+        <image class='mine'  wx:key="id" src="{{main.data.house_info.images[0].image_path}}"></image>
+        <view class='small'>
+            <image src="{{main.data.house_info.images[1].image_path}}"></image>
+            <image src="{{main.data.house_info.images[2].image_path}}"></image>
+        </view>
+      </view>
+      <view class='tab clearfix'>
+        <text class='price'>
+          <text class='tab-title'>售价</text>
+          <text class='tab-tip'>{{main.data.house_info.price}}万</text>
+        </text>
+        <text class='type'>
+          <text class='tab-title'>房型</text>
+          <text class='tab-tip'>{{main.data.house_info.type}}</text>
+        </text>
+        <text class='area'>
+          <text class='tab-title'>建筑面积</text>
+          <text class='tab-tip'>{{main.data.house_info.area}}㎡</text>
+        </text>
+      </view>
+      <view class='star'>
+        <view class='star-time'>
+            <text class='time'>开盘时间：</text>
+            <text class='about'>{{main.data.house_info.open_time}}</text>
+        </view>
+          <view class='star-add'>
+            <text class='add'>地址:</text>
+            <text class='address'>{{main.data.house_info.seTitle}} </text>
+        </view>
+      </view>
+      <view class='cheap'>
+        <view class='cheap-con'>
+            <image class='icon' src='./images/c.png'></image>
+            <text class='con'>全款9.8折，贷款9.9折</text>
+            <text class='cheap-button'>领取优惠</text>
+        </view>
+      </view>
+       <view class='more'>更多房源信息</view>
+    </view>
+    <view class='content'>
+        <view class='content-tab clearfix' >
+            <text  wx:for="{{main.data.typs_conditions}}" wx:key="" bindtap='clicktype' id="{{item.id}}">{{item.name}}</text>
+        </view>
+        <view class='houst-list'>
+            <view class='list'  wx:for="{{house.data.house_lists}}" wx:key="">
+              <view class='list-img'>
+                  <image src="{{item.image}}"></image>
+              </view>
+              <view class='info'>
+                <view class='info-tab'>
+                   <text class='info-title'>{{item.title}}</text>
+                   <text class='buy'>在售</text>
+                   <text class='hot'>热门</text>
+                </view>
+                <view class='info-area'>建面191㎡/南北向</view>
+                <view class='tip'>
+                  <text wx:for="{{item.tabs}}" wx:key="">{{item}}</text>
+                </view>
+                <view class='about-info'>
+                   <text>约</text>
+                   <text class='info-pr'>1630</text>
+                   <text>万/套</text>
+                </view>
+              </view>
+            </view>
+        </view>
+    </view>
+    <view class='comment'>
+      <view class='comment-tab'>
+         <text class='comm-title'>用户评论</text>
+         <text class='more-comm'>更多评论</text>
+      </view>
+      <view class='comm-icon'>
+         <image src='./images/b.png'></image>
+         <image src='./images/b.png'></image>
+         <image src='./images/b.png'></image>
+         <image src='./images/b.png'></image>
+         <image src='./images/d.png'></image>
+         <text class='score'>综合<text class='sum'>4.0</text>分
+         </text>
+      </view>
+      <view class='comm-tip'>
+         <text wx:for="{{main.data.comments.tab_score}}" wx:key="">{{item.name}}{{item.score}}分</text>
+      </view>
+      <view class='comm-tab'>
+         <text>全部点评(6)</text>
+         <text>实看用户(5)</text>
+         <text>购买用户(5))</text>
+         <text>好评(5)</text>
+         <text>差评(5)</text>
+         <text>有图(5)</text>
+      </view>
+      <view class='comm-con' wx:for="{{main.data.comments.comment}}" wx:key="">
+            <view>
+                <image src="{{item.user_image}}"></image>
+            <view>
+            <view class='comm-name'>{{item.user_name}}</view>
+            <view class='comm-img'>
+              <image src='./images/b.png'></image>
+              <image src='./images/b.png'></image>
+              <image src='./images/b.png'></image>
+              <image src='./images/b.png'></image>
+              <image src='./images/d.png'></image>
+              <text wx:for="{{item.user_score}}" wx:key="">{{item.name}}{{item.score}}</text>
+              
+            </view>
+            <view class='comm-text'>
+              <text class='text'>{{item.user_comment}}</text>
+            </view>
+            <text class='text-all'>全文</text>
+            <text class='text-time'>{{item.creat_time}}</text>
+        </view>
+        </view>
+      </view>
+    </view>
+    <view class='ask'>
+       <view class='ask-title'>
+           <text class='ask-t'>买房问大家(1389)</text>
+           <text class='ask-a'>查看全部</text>
+       </view>
+       <view class='ask-list'>
+         <view class='ask-item' wx:for="{{main.data.questions}}" wx:key="">
+            <image src='./images/f.png'></image>
+            <text class='item-title'>{{item.question}}</text>
+            <text class='many'>{{item.attention_num}}人关注 | {{item.answer_num}}个回答</text>
+         </view>
+       </view>
+    </view>
+    <view class='border'>
+      <view class='ask-title clearfix'>
+           <text class='ask-t'>周边推荐</text>
+           <text class='ask-a'>更多推荐</text>
+       </view>
+       <view class='bor-img'>
+          <view wx:for="{{main.data.hotlists}}"  wx:key="">
+              <image src="{{item.image}}">  </image>
+              <view class='bor-con'>
+                 <text class='bor-add'>{{item.title}}</text>
+                 <text class='bor-type'>住宅</text>
+                 <text class='bor-river'>{{item.address}}</text>
+                 <text class='bor-price'>均价{{item.uprice}}元/平 </text>
+              </view>
+          </view>
+         
+      </view>
+    </view>
+    <view class='allow'>预售许可证： 京房售证字（2017）7号</view>
+    <view class='bottom'>
+       <text class='ask-cheap'>询优惠</text>
+       <text class='ask-buy'>联系售楼处</text>
+    </view>
+</view>
+
